@@ -45,10 +45,24 @@ public class CellPhoneApplication {
         userPhoneTwo.setModel("Motorolla");
         userPhoneTwo.setCarrier("Verizon");
         userPhoneTwo.setPhoneNumber("(724) 601-9075");
-        userPhoneTwo.setOwner("Glenn");
+        userPhoneTwo.setOwner("Bosland Electric");
 
-        userPhoneOne.dial(userPhoneTwo.getPhoneNumber());
-        userPhoneTwo.dial(userPhoneOne.getPhoneNumber());
+        userPhoneOne.dial(userPhoneTwo.getOwner(),userPhoneTwo.getPhoneNumber());
+        userPhoneTwo.dial(userPhoneOne.getOwner(),userPhoneOne.getPhoneNumber());
+
+        //New, overloaded phone
+        //let's get the info first
+        System.out.printf("\n%s, who are you calling? ",userName);
+        String callOwner = scanner.nextLine();
+        System.out.printf("\nWhat is %s's phone number? ",callOwner);
+        String callPhoneNumber = scanner.nextLine();
+
+        //overloaded method
+        CellPhone userPhoneThree = new CellPhone(callPhoneNumber,callOwner);
+
+        userPhoneOne.dial(userPhoneThree.getOwner(),userPhoneThree.getPhoneNumber());
+        userPhoneThree.dial(userPhoneOne);
+
 
 
 
